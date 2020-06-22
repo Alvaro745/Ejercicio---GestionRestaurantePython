@@ -14,11 +14,11 @@ class Restaurantes:
         2.- MOSTRAR LISTADO DEL MENU
         3.- MOSTRAR MENU DEL DIA
         4.- MODIFICAR PLATO
-        5.- DAR DE ALTA AL PLATO
-        6.- DAR DE BAJA AL PLATO
-        7.- MOSTRAR PLATOS DE BAJA
+        5.- HABILITAR PLATO
+        6.- DESHABILITAR PLATO
+        7.- MOSTRAR PLATOS DE DESHABILITADO
         8.- BUSCAR POR TIPO DE PLATO
-        9.- Salir
+        9.- SALIR
         """
 
         print(opciones)
@@ -96,8 +96,8 @@ class Restaurantes:
             return "TODAVIA NO SE AGREGARON PLATOS DE COMIDAS A LA BASE DE DATOS"
     
     def MenuTodoPlato(self):
-        print(self.verPlatoAlta())
-        print(self.verPlatoBaja())
+        self.verPlatoAlta()
+        self.verPlatoBaja()
 
     def descripcionesPlato(self, posicion, habilitado):
         if(self.habilitado[posicion] == habilitado):
@@ -113,8 +113,9 @@ class Restaurantes:
 
     def editarPlato(self):
         print("*********ACTUALIZAR EL PLATO DE COMIDA**********")
+        self.verPlatoAlta()
+        self.verPlatoBaja()
         posicion = self.buscarPlato(1)
-        # self.descripcionesPlato()
         nuevo_precio = int(input("Digite el nuevo precio del plato de comida {}: \n".format(self.nombre[posicion])))
         nuevo_descuento = int(input("Digite el nuevo porcentaje de descuento para el plato de comida {}: \n".format(self.nombre[posicion])))
         nuevo_descripcion = input("Digite la nueva descripcion para el plato de comida {}: \n".format(self.nombre[posicion]))
@@ -187,7 +188,7 @@ class Restaurantes:
 restaurante = Restaurantes()
 restaurante.guardarPlato('A1', 'Majau', 10, 20, 'Majau de Charque', 'Almuerzo')
 restaurante.guardarPlato('A2', 'Pollo', 10, 15, 'Pollo Frito', 'Cena')
-restaurante.guardarPlato('A3', 'Sopa', 5, 0, 'Sopa de Mani', 'Almuerzo')
+restaurante.guardarPlato('A3', 'Sopa de Mani', 5, 0, 'Sopa de Mani con Papas fritas', 'Almuerzo')
 restaurante.guardarPlato('A4', 'Empanada', 3, 0, 'Empanada de Queso', 'desayuno')
 restaurante.guardarPlato('A5', 'Helado', 8, 0, 'Helado de Frutilla', 'Postre')
 restaurante.menu()
