@@ -116,9 +116,9 @@ class Restaurantes:
         self.verPlatoAlta()
         self.verPlatoBaja()
         posicion = self.buscarPlato(1)
-        nuevo_precio = int(input("Digite el nuevo precio del plato de comida {}: \n".format(self.nombre[posicion])))
-        nuevo_descuento = int(input("Digite el nuevo porcentaje de descuento para el plato de comida {}: \n".format(self.nombre[posicion])))
-        nuevo_descripcion = input("Digite la nueva descripcion para el plato de comida {}: \n".format(self.nombre[posicion]))
+        nuevo_precio = int(input("Digite el nuevo precio para {}: \n".format(self.nombre[posicion])))
+        nuevo_descuento = int(input("Digite el nuevo porcentaje de descuento para {}: \n".format(self.nombre[posicion])))
+        nuevo_descripcion = input("Digite la nueva descripcion para {}: \n".format(self.nombre[posicion]))
         nuevo_tipo = input("Digite el nuevo tipo de plato de comida entre (Desayuno, Almuerzo, Cena y Postre) para el nuevo Plato: \n")
         self.precio[posicion] = nuevo_precio
         self.descuento[posicion] = nuevo_descuento
@@ -126,7 +126,10 @@ class Restaurantes:
         self.tipo[posicion] = nuevo_tipo
         print(self.modificarPlato(posicion, nuevo_precio, nuevo_descuento, nuevo_descripcion, nuevo_tipo))
         # self.descripcionesPlato(posicion)
-        return "Modificacion del Plato de comida en el Menu Completado"
+        modificarOtro = input("Desea agregar otro Plato de comida? y/n \n")
+        if (modificarOtro == 'y' or modificarOtro == 'Y'):
+            self.editarPlato()
+        return "Modificacion del Plato en el Menu Completado"
 
     def modificarPlato(self, posicion, precio, descuento, descripcion, tipo):
         self.precio[posicion] = precio
